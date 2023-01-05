@@ -1,13 +1,12 @@
 //Importing modules
 
 const inquirer = require("inquirer");
+const mysql = require('mysql2');
 
-const mysql = require("mysql");
-
-require("console.table")
+require('console.table')
 
 //created connection
-const db = mysql.createConnection({
+const connection = mysql.createConnection({
 
   host: "localhost",
 
@@ -15,7 +14,7 @@ const db = mysql.createConnection({
 
   user: "root",
 
-  password: '',
+  password: 'Momena@76',
 
   database: "employees_db",
 
@@ -23,8 +22,8 @@ const db = mysql.createConnection({
 
 // Connect to MySQL and data_base
 
-connection.connect(function (err) {
-  if (err) throw err;
+// connection.connect(function (err) {
+//   if (err) throw err;
 
 
 //Prompt // Create an array of questions for user input
@@ -46,63 +45,63 @@ function firstPrompt() {
         "Update Employee Role",
         "Add Role",
         "End"]
-    })
-    .then(function ({ task }) {
-      switch (task) {
-        case "View Employees":
-          viewEmployee();
-          break;
+    }).then(function ({ task }) {
+      console.log(task)
+//       switch (task) {
+//         case "View Employees":
+//           viewEmployee();
+//           break;
 
-        case "View Employees by Department":
-          viewEmployeeByDepartment();
-          break;
+//         case "View Employees by Department":
+//           viewEmployeeByDepartment();
+//           break;
       
-        case "Add Employee":
-          addEmployee();
-          break;
+//         case "Add Employee":
+//           addEmployee();
+//           break;
 
-        case "Remove Employees":
-          removeEmployees();
-          break;
+//         case "Remove Employees":
+//           removeEmployees();
+//           break;
 
-        case "Update Employee Role":
-          updateEmployeeRole();
-          break;
+//         case "Update Employee Role":
+//           updateEmployeeRole();
+//           break;
 
-        case "Add Role":
-          addRole();
-          break;
+//         case "Add Role":
+//           addRole();
+//           break;
 
-        case "End":
-          connection.end();
-          break;
-      }
+//         case "End":
+//           connection.end();
+//           break;
+//       }
     });
 }
 
 //choose employee by name,last name.id role,manager id
 
 function viewEmployee() {
-  console.log("Viewing employees\n");
+  console.log(`Viewing employees\n`);
 
-  var query =
-    `SELECT e.id, e.first_name, e.last_name, r.title, d.name AS department, r.salary, CONCAT(m.first_name, ' ', m.last_name) AS manager
-  FROM employee e
-  JOIN role r
-	ON e.role_id = r.id
-  JOIN department d
-  ON d.id = r.department_id
-  JOIN employee m
-	ON m.id = e.manager_id`
+  //var query =
+  //   `SELECT e.id, e.first_name, e.last_name, r.title, d.name AS department, r.salary, CONCAT(m.first_name, ' ', m.last_name) AS manager
+  // FROM employee e
+  // JOIN role r
+	// ON e.role_id = r.id
+  // JOIN department d
+  // ON d.id = r.department_id
+  // JOIN employee m
+	// ON m.id = e.manager_id`
 
-  connection.query(query, function (err, res) {
-    if (err) throw err;
+  // connection.query(query, function (err, res) {
+  //   if (err) throw err;
 
-    console.table(res);
-    console.log("Employees viewed!\n");
+  //   console.table(res);
+  //   console.log("Employees viewed!\n");
 
     firstPrompt();
-  });
+ // });
 
 }
 
@@ -447,4 +446,4 @@ function promptAddRole(departmentChoices) {
         });
 
     });
-}})
+}
