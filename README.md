@@ -17,7 +17,7 @@ The command-line application should allow users to:
  *View departments, roles, employees
 *Update employee roles 
 
-<iframe src="https://drive.google.com/file/d/1n8S7It4wF6-zdwbsQaODVhGemO9G5kSv/preview" width="640" height="480"></iframe>
+https://youtu.be/TgEZFaaD8Bo
 
 ## Installation
 Clone from GitHub and open project directory, then npm install to install all required dependencies
