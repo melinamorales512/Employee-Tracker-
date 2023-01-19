@@ -16,6 +16,8 @@ The command-line application should allow users to:
  *Add departments,roles,employees 
  *View departments, roles, employees
 *Update employee roles 
+https://drive.google.com/file/d/1n8S7It4wF6-zdwbsQaODVhGemO9G5kSv/view
+
 ## Installation
 Clone from GitHub and open project directory, then npm install to install all required dependencies
 ## Usage
